@@ -1,0 +1,95 @@
+.hourly-wrapper {
+  margin-bottom: 50px;
+}
+
+.hourly {
+  color: #525252;
+  border-radius: 8px;
+  font-family: "Gentium Book Basic", serif;
+  padding: 20px;
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+.hourly-time,
+.hourly-time-midnight,
+.hourly-temp,
+.hourly-temp-degrees {
+  color: #3e3e3e;
+}
+
+.hourly-time {
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.hourly-time-midnight {
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  margin: 0px;
+  margin-right: 3px;
+  text-transform: uppercase;
+}
+
+.hourly-temp > span {
+  color: #343434;
+  display: block;
+  font-family: "Adamina", serif;
+  font-size: 30px;
+  margin-left: 8px;
+}
+
+.hourly-temp-degrees {
+  display: inline;
+  font-size: 15px;
+  vertical-align: top;
+}
+
+.hourly-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5c5c5c;
+}
+
+.hourly-inner {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.hourly-condition {
+  display: block;
+  margin: 0px;
+}
+
+.loader {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 778px) {
+  .hourly {
+    padding: 5px;
+    margin-left: 1px;
+    margin-right: 1px;
+    font-size: 12px;
+  }
+  .hourly:first-child {
+    border-top-left-radius: 0px;
+  }
+  .hourly-img {
+    margin-bottom: 10px;
+  }
+  .hourly-temp {
+    margin-bottom: 10px;
+  }
+  
+  .hourly-temp > span {
+    font-size: 30px;
+    margin-left: 0px;
+  }
+
+  .hourly-inner {
+    margin-bottom: 1px;
+  }
+}

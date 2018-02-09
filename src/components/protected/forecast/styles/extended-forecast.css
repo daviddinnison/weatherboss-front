@@ -1,0 +1,52 @@
+.extended-wrapper {
+  margin-bottom: 50px;
+}
+
+.individual-day {
+  color: #525252;
+  border-radius: 5px;
+  font-family: "Gentium Book Basic", serif;
+  font-size: 15px;
+  padding: 20px;
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+.extended-time {
+  color: #3e3e3e;
+  display: block;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.extended-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5c5c5c;
+}
+
+.individual-day img {
+  display: block;
+}
+
+.extended-conditions,
+.extended-inner {
+  display: block;
+}
+
+@media (max-width: 778px) {
+  .individual-day {
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+  .extended-time {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  .extended-conditions {
+    margin-top: 5px;
+  }
+}

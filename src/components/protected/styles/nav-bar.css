@@ -1,0 +1,41 @@
+.main-nav {
+  background: #d4d4d4;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin: 0px auto;
+  width: 300px;
+}
+
+.main-nav ul {
+  text-align: center;
+}
+
+.main-nav li {
+  border: none;
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.main-nav a {
+  color: #848484;
+  height: 100%;
+  width: 100%;
+}
+
+.main-nav a:hover {
+  text-decoration: none;
+}
+
+.main-nav li:hover {
+  background-color: #B6B6B6;
+  text-decoration: none;
+}
+
+.main-nav span {
+  color: #848484;
+}
+
+.logout-button {
+    cursor: pointer;
+}

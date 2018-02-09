@@ -1,0 +1,86 @@
+.rendered-location-link {
+  padding: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.rendered-location-data {
+  font-family: 'Gentium Book Basic', serif;
+}
+
+.rendered-location-link {
+  color: #343434;
+  text-decoration: none;
+}
+
+.rendered-location-name {
+  display: block;
+  font-family: "Oswald", sans-serif;
+  font-size: 25px;
+}
+.rendered-location-name,
+.rendered-location-temperature {
+  position: relative;
+  bottom: 5px;
+}
+
+.rendered-location-temperature {
+  font-family: "Oswald", serif;
+  font-size: 40px;
+}
+
+.rendered-location-temperature > span {
+  font-size: 20px;
+  vertical-align: top;
+}
+
+.last-updated {
+  display: block;
+  font-size: 10px;
+  font-style: italic;
+}
+
+.weather-icon {
+  display: block;
+  margin: 0px auto;
+}
+
+.rendered-location-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #525252;
+}
+
+.rendered-location-inner {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.rendered-location-loader {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 778px) {
+  .rendered-location-data {
+    text-align: left;
+    padding-left: 10px;
+  }
+  .primary-location-box {
+    margin-bottom: 10px;
+  }
+  .rendered-location-name {
+    font-size: 30px;
+  }
+  .rendered-location-temperature {
+    font-size: 30px;
+  }
+  .rendered-location-condition,
+  .weather-icon {
+    margin-left: 5px;
+  }
+  .weather-icon {
+    margin: 0px;
+  }
+}

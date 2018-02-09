@@ -1,0 +1,46 @@
+.landing-page {
+  margin-top: 30px;
+}
+
+.landing-info h1,
+h2 {
+    font-family: "Oswald", sans-serif;
+  margin: 0px;
+}
+
+.landing-info h1 {
+
+  font-size: 30px;
+}
+.landing-info h2 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.landing-info ul {
+
+  margin-bottom: 30px;;
+}
+.landing-login {
+}
+
+.landing-glyphicon {
+  margin-right: 10px;
+}
+
+.register-link {
+    display: block;
+}
+.globe-img {
+  display: block;
+  height: auto;
+  width: 300px;
+}
+
+@media (max-width: 778px) {
+  .globe-img {
+    max-width: 300px;
+    width: 80%;
+    margin-bottom: 30px;
+  }
+}

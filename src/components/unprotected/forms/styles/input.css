@@ -1,0 +1,6 @@
+.form-input > input {
+  border: none;
+  border: 1px solid lightgrey;
+  padding: 5px 10px;
+  width: 300px;
+}

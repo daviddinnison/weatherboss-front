@@ -1,0 +1,51 @@
+.new-user {
+  margin-top: 50px;
+}
+
+.new-user-emphasis {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.new-user img {
+  height: auto;
+  width: 500px;
+}
+
+.attribution {
+  font-size: 10px;
+  font-style: italic;
+  display: block;
+}
+
+.new-user p {
+  padding-top: 40px;
+  margin-bottom: 20px;
+}
+
+.new-user-add-location {
+  background: #f57a7a;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  display: block;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  width: 200px;
+}
+
+.new-user-add-location:hover {
+  background: #d75c5c;
+  color: #cdcdcd;
+  text-decoration: none;
+}
+
+@media (max-width: 778px) {
+  .new-user {
+    margin-top: 20px;
+  }
+  .new-user-img {
+    margin-top: 40px;
+  }
+}
