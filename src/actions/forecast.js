@@ -135,7 +135,7 @@ export const fetchLocationsError = message => ({
 
 export const fetchLocations = id => dispatch => {
   dispatch(fetchLocationsRequest());
-  fetch(`${API_BASE_URL}/users/locations/${id}`, {
+  fetch(`${API_BASE_URL}/api/users/locations/${id}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
