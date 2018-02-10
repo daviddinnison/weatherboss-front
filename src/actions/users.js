@@ -117,7 +117,7 @@ export const addLocationError = message => ({
 export const addLocation = (id, input) => dispatch => {
   dispatch(addLocationRequest());
   const formattedInput = { name: input };
-  fetch(`${API_BASE_URL}/api/users/newlocation/${id}`, {
+  fetch(`${API_BASE_URL}api/users/newlocation/${id}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -159,7 +159,7 @@ export const deleteLocationError = message => ({
 export const deleteLocation = (id, locationId) => dispatch => {
   dispatch(deleteLocationRequest());
   const formattedLocationId = { locationId: locationId };
-  fetch(`${API_BASE_URL}/api/users/deletelocation/${id}`, {
+  fetch(`${API_BASE_URL}api/users/deletelocation/${id}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -200,7 +200,7 @@ export const getMetricError = message => ({
 
 export const getMetricData = (id) => dispatch => {
   dispatch(getMetricRequest());
-  fetch(`${API_BASE_URL}/api/users/metric/${id}`, {
+  fetch(`${API_BASE_URL}api/users/metric/${id}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -245,7 +245,7 @@ export const editMetricData = (id, metricInput) => dispatch => {
   const formattedRequest = {
     metric: metricInput
   }
-  fetch(`${API_BASE_URL}/api/users/metric/${id}`, {
+  fetch(`${API_BASE_URL}api/users/metric/${id}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
