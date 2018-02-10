@@ -24,7 +24,7 @@ export class RenderedLocation extends React.Component {
       loading: true
     });
     fetch(
-      `http://api.wunderground.com/api/${API_KEY}/conditions/q/${
+      `https://api.wunderground.com/api/${API_KEY}/conditions/q/${
         this.props.name
       }.json`,
       {}

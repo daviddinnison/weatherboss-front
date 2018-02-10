@@ -21,7 +21,7 @@ export const getHourlyForecastError = message => ({
 export const getHourlyForecast = userInput => dispatch => {
   dispatch(getHourlyForecastRequest());
   fetch(
-    `http://api.wunderground.com/api/${API_KEY}/hourly/q/${userInput}.json`,
+    `https://api.wunderground.com/api/${API_KEY}/hourly/q/${userInput}.json`,
     {}
   )
     .then(res => {
@@ -59,7 +59,7 @@ export const getExtendedForecastError = message => ({
 export const getExtendedForecast = userInput => dispatch => {
   dispatch(getExtendedForecastRequest());
   fetch(
-    `http://api.wunderground.com/api/${API_KEY}/forecast10day/q/${userInput}.json`,
+    `https://api.wunderground.com/api/${API_KEY}/forecast10day/q/${userInput}.json`,
     {}
   )
     .then(res => {
@@ -98,7 +98,7 @@ export const getAlertError = message => ({
 export const getAlert = userInput => dispatch => {
   dispatch(getAlertRequest());
   fetch(
-    `http://api.wunderground.com/api/${API_KEY}/alerts/q/${userInput}.json`,
+    `https://api.wunderground.com/api/${API_KEY}/alerts/q/${userInput}.json`,
     {}
   )
     .then(res => {
