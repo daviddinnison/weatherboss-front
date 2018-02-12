@@ -6,7 +6,7 @@ import { normalizeResponseErrors } from "./utils";
 const API_KEY = "b20a7be72cb0b77a";
 
 export const registerUser = user => dispatch => {
-  return fetch(`${API_BASE_URL}/api/users`, {
+  return fetch(`${API_BASE_URL}api/users`, {
     method: "POST",
     headers: {
       "content-type": "application/json"
