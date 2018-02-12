@@ -7,7 +7,7 @@ import forecastReducer from './reducers/forecast';
 import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
 const store = createStore(
     combineReducers({
@@ -16,7 +16,7 @@ const store = createStore(
         protectedData: protectedDataReducer,
         forecast: forecastReducer
     }),
-    composeEnhancers(applyMiddleware(thunk))
+    applyMiddleware(thunk)
 );
 
 // Hydrate the authToken from localStorage if it exist
