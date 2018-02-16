@@ -1,6 +1,9 @@
 import React from "react";
 import { Field, reduxForm, focus } from "redux-form";
+
 import Input from "./input";
+import SpinnerSmall from "../spinner-small";
+
 import { login } from "../../../actions/auth";
 
 import "./styles/login-form.css";
@@ -25,12 +28,7 @@ export class LoginForm extends React.Component {
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
         {error}
-        <Field
-          component={Input}
-          type="text"
-          name="username"
-          id="username"
-        />
+        <Field component={Input} type="text" name="username" id="username" />
         <label htmlFor="username">Username</label>
         <Field
           component={Input}
@@ -39,8 +37,11 @@ export class LoginForm extends React.Component {
           id="password"
         />
         <label htmlFor="password">Password</label>
-        <button disabled={this.props.pristine || this.props.submitting} className="login-button">
-          Log in
+        <button
+          disabled={this.props.pristine || this.props.submitting}
+          className="login-button"
+        >
+          {this.props.submitting ? <SpinnerSmall /> : "Login"}
         </button>
       </form>
     );
