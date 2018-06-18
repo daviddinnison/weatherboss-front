@@ -1,18 +1,19 @@
-import { API_BASE_URL } from "../config";
-const API_KEY = "b20a7be72cb0b77a";
+import { API_BASE_URL, WUNDERGROUND_API_KEY } from '../config';
 
-export const GET_HOURLY_FORECAST_REQUEST = "GET_HOURLY_FORECAST_REQUEST";
+
+
+export const GET_HOURLY_FORECAST_REQUEST = 'GET_HOURLY_FORECAST_REQUEST';
 export const getHourlyForecastRequest = () => ({
   type: GET_HOURLY_FORECAST_REQUEST
 });
 
-export const GET_HOURLY_FORECAST_SUCCESS = "GET_HOURLY_FORECAST_SUCCESS";
+export const GET_HOURLY_FORECAST_SUCCESS = 'GET_HOURLY_FORECAST_SUCCESS';
 export const getHourlyForecastSuccess = data => ({
   type: GET_HOURLY_FORECAST_SUCCESS,
   data
 });
 
-export const GET_HOURLY_FORECAST_ERROR = "GET_HOURLY_FORECAST_ERROR";
+export const GET_HOURLY_FORECAST_ERROR = 'GET_HOURLY_FORECAST_ERROR';
 export const getHourlyForecastError = message => ({
   type: GET_HOURLY_FORECAST_ERROR,
   message
@@ -20,10 +21,7 @@ export const getHourlyForecastError = message => ({
 
 export const getHourlyForecast = userInput => dispatch => {
   dispatch(getHourlyForecastRequest());
-  fetch(
-    `https://api.wunderground.com/api/${API_KEY}/hourly/q/${userInput}.json`,
-    {}
-  )
+  fetch(`https://api.wunderground.com/api/${WUNDERGROUND_API_KEY}/hourly/q/${userInput}.json`, {})
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -39,18 +37,18 @@ export const getHourlyForecast = userInput => dispatch => {
     });
 };
 
-export const GET_EXTENDED_FORECAST_REQUEST = "GET_EXTENDED_FORECAST_REQUEST";
+export const GET_EXTENDED_FORECAST_REQUEST = 'GET_EXTENDED_FORECAST_REQUEST';
 export const getExtendedForecastRequest = () => ({
   type: GET_EXTENDED_FORECAST_REQUEST
 });
 
-export const GET_EXTENDED_FORECAST_SUCCESS = "GET_EXTENDED_FORECAST_SUCCESS";
+export const GET_EXTENDED_FORECAST_SUCCESS = 'GET_EXTENDED_FORECAST_SUCCESS';
 export const getExtendedForecastSuccess = data => ({
   type: GET_EXTENDED_FORECAST_SUCCESS,
   data
 });
 
-export const GET_EXTENDED_FORECAST_ERROR = "GET_EXTENDED_FORECAST_ERROR";
+export const GET_EXTENDED_FORECAST_ERROR = 'GET_EXTENDED_FORECAST_ERROR';
 export const getExtendedForecastError = message => ({
   type: GET_EXTENDED_FORECAST_ERROR,
   message
@@ -58,10 +56,7 @@ export const getExtendedForecastError = message => ({
 
 export const getExtendedForecast = userInput => dispatch => {
   dispatch(getExtendedForecastRequest());
-  fetch(
-    `https://api.wunderground.com/api/${API_KEY}/forecast10day/q/${userInput}.json`,
-    {}
-  )
+  fetch(`https://api.wunderground.com/api/${WUNDERGROUND_API_KEY}/forecast10day/q/${userInput}.json`, {})
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -78,18 +73,18 @@ export const getExtendedForecast = userInput => dispatch => {
     });
 };
 
-export const GET_ALERT_REQUEST = "GET_ALERT_REQUEST";
+export const GET_ALERT_REQUEST = 'GET_ALERT_REQUEST';
 export const getAlertRequest = () => ({
   type: GET_ALERT_REQUEST
 });
 
-export const GET_ALERT_SUCCESS = "GET_ALERT_SUCCESS";
+export const GET_ALERT_SUCCESS = 'GET_ALERT_SUCCESS';
 export const getAlertSuccess = data => ({
   type: GET_ALERT_SUCCESS,
   data
 });
 
-export const GET_ALERT_ERROR = "GET_ALERT_ERROR";
+export const GET_ALERT_ERROR = 'GET_ALERT_ERROR';
 export const getAlertError = message => ({
   type: GET_ALERT_ERROR,
   message
@@ -97,10 +92,7 @@ export const getAlertError = message => ({
 
 export const getAlert = userInput => dispatch => {
   dispatch(getAlertRequest());
-  fetch(
-    `https://api.wunderground.com/api/${API_KEY}/alerts/q/${userInput}.json`,
-    {}
-  )
+  fetch(`https://api.wunderground.com/api/${WUNDERGROUND_API_KEY}/alerts/q/${userInput}.json`, {})
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -116,18 +108,18 @@ export const getAlert = userInput => dispatch => {
     });
 };
 
-export const FETCH_LOCATIONS_REQUEST = "FETCH_LOCATIONS_REQUEST";
+export const FETCH_LOCATIONS_REQUEST = 'FETCH_LOCATIONS_REQUEST';
 export const fetchLocationsRequest = () => ({
   type: FETCH_LOCATIONS_REQUEST
 });
 
-export const FETCH_LOCATIONS_SUCCESS = "FETCH_LOCATIONS_SUCCESS";
+export const FETCH_LOCATIONS_SUCCESS = 'FETCH_LOCATIONS_SUCCESS';
 export const fetchLocationsSuccess = locations => ({
   type: FETCH_LOCATIONS_SUCCESS,
   locations
 });
 
-export const FETCH_LOCATIONS_ERROR = "FETCH_LOCATIONS_ERROR";
+export const FETCH_LOCATIONS_ERROR = 'FETCH_LOCATIONS_ERROR';
 export const fetchLocationsError = message => ({
   type: FETCH_LOCATIONS_ERROR,
   message
@@ -137,17 +129,17 @@ export const fetchLocations = id => dispatch => {
   dispatch(fetchLocationsRequest());
   fetch(`${API_BASE_URL}api/users/locations/${id}`, {
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
     }
   })
-  .then(res => {
-    if (!res.ok) {
-      throw new Error(res.statusText);
-    }
-    return res.json();
-  })
-  .then(locations => {
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(locations => {
       dispatch(fetchLocationsSuccess(locations));
     })
     .catch(err => {

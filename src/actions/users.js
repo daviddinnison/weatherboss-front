@@ -1,9 +1,7 @@
 import { SubmissionError } from "redux-form";
 
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL, WUNDERGROUND_API_KEY } from "../config";
 import { normalizeResponseErrors } from "./utils";
-
-const API_KEY = "b20a7be72cb0b77a";
 
 export const registerUser = user => dispatch => {
   return fetch(`${API_BASE_URL}api/users`, {
@@ -51,7 +49,7 @@ export const validateLocationError = err => ({
 
 export const validateLocation = (id, userInput) => dispatch => {
   fetch(
-    `https://api.wunderground.com/api/${API_KEY}/geolookup/q/${userInput}.json`,
+    `https://api.wunderground.com/api/${WUNDERGROUND_API_KEY}/geolookup/q/${userInput}.json`,
     {}
   )
     .then(res => {
