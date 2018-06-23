@@ -1,12 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import requiresLogin from "../../requires-login";
-import ExtendedForecast from "./extended-forecast";
-import ForecastAlert from "./forecast-alert";
-import HourlyForecast from "./hourly-forecast";
+import requiresLogin from '../../requires-login';
+import ExtendedForecast from './extended-forecast';
+import ForecastAlert from './forecast-alert';
+import HourlyForecast from './hourly-forecast';
 
-import "./styles/forecast-page.css";
+import './styles/forecast-page.css';
 
 export class ForecastPage extends React.Component {
   constructor(props, context) {
@@ -25,31 +25,39 @@ export class ForecastPage extends React.Component {
     });
   }
 
+  renderSelectedForecastButton() {
+    if (this.state.hourly) {
+      return <span className="current-forecast">hourly forecast</span>;
+    } else if (this.state.extended) {
+      return (
+        <span onClick={this.handleClick} className="toggle-forecast">
+          get hourly forecast
+        </span>
+      );
+    }
+  }
+
+  renderOtherForecastButton() {
+    if (this.state.hourly) {
+      return (
+        <span onClick={this.handleClick} className="toggle-forecast">
+          get extended forecast
+        </span>
+      );
+    } else if (this.state.extended) {
+      return <span className="current-forecast">extended forecast</span>;
+    }
+  }
+
   render() {
-    const location = this.props.location.pathname.replace("/forecast/", "");
+    const location = this.props.location.pathname.replace('/forecast/', '');
     return (
       <div className="container forecast-page">
         <h2>{location}</h2>
         <ForecastAlert name={location} />
         <div className="forecast-nav">
-          {/* toggles what is displayed as current selected forecast */}
-          {this.state.hourly && (
-            <span className="current-forecast">hourly forecast</span>
-          )}
-          {this.state.extended && (
-            <span onClick={this.handleClick} className="toggle-forecast">
-              get hourly forecast
-            </span>
-          )}
-          {/* toggles what is displayed as other forecast */}
-          {this.state.hourly && (
-            <span onClick={this.handleClick} className="toggle-forecast">
-              get extended forecast
-            </span>
-          )}
-          {this.state.extended && (
-            <span className="current-forecast">extended forecast</span>
-          )}
+          {this.renderSelectedForecastButton()}
+          {this.renderOtherForecastButton()}
         </div>
         {this.state.hourly && <HourlyForecast name={location} />}
         {this.state.extended && <ExtendedForecast name={location} />}
