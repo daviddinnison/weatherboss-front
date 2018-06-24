@@ -19,7 +19,7 @@ export class EditLocations extends React.Component {
   }
 
   renderLocationsEdit() {
-    if (this.props.fetchLocationLoading) {
+    if (this.props.loading) {
       return (<div className="edit-location-loader">
       <Spinner/>
     </div>);
@@ -69,7 +69,7 @@ const mapStateToProps = state => {
   return {
     locations: state.forecast.locations,
     id: state.auth.currentUser.id,
-    fetchLocationLoading: state.forecast.fetchLocationLoading
+    loading: state.forecast.loading.fetchLocations
   };
 };
 

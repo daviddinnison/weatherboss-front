@@ -10,7 +10,7 @@ import {
   VALIDATE_LOCATION_REQUEST,
   VALIDATE_LOCATION_SUCCESS,
   VALIDATE_LOCATION_ERROR
-} from "../actions/forecast";
+} from '../actions/forecast';
 
 import {
   DELETE_LOCATION_REQUEST,
@@ -22,19 +22,21 @@ import {
   EDIT_METRIC_REQUEST,
   EDIT_METRIC_SUCCESS,
   EDIT_METRIC_ERROR
-} from "../actions/users";
+} from '../actions/users';
 /*eslint-enable */
 
 const initialState = {
   alert: [{}],
-  alertLoading: false,
   extendedForecastData: {
     forecastday: [{ date: {}, high: {}, low: {}, qpf_allday: {}, avewind: {} }]
   },
-  extendedLoading: false,
-  fetchLocationLoading: false,
-  hourlyLoading: false,
-  hourlyForecastData: [{ FCTTIME: {}, feelslike: {}, temp: {}, qpf: {}, wdir:{}, wspd: {}, dewpoint: {}, mslp: {} }],
+  hourlyForecastData: [{ FCTTIME: {}, feelslike: {}, temp: {}, qpf: {}, wdir: {}, wspd: {}, dewpoint: {}, mslp: {} }],
+  loading: {
+    alert: false,
+    extendedForecast: false,
+    fetchLocations: false,
+    hourlyForecastData: false
+  },
   locations: [],
   locationError: null,
   metric: false
@@ -42,147 +44,184 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_HOURLY_FORECAST_REQUEST": {
+    case 'GET_HOURLY_FORECAST_REQUEST': {
       return Object.assign({}, state, {
-        hourlyLoading: true
+        loading: {
+          ...state.loading,
+          hourlyLoading: true
+        }
       });
     }
-    case "GET_HOURLY_FORECAST_SUCCESS": {
+    case 'GET_HOURLY_FORECAST_SUCCESS': {
       return Object.assign({}, state, {
         hourlyForecastData: action.data,
-        hourlyLoading: false
+        loading: {
+          ...state.loading,
+          hourlyLoading: false
+        }
       });
     }
-    case "GET_HOURLY_FORECAST_ERROR": {
+    case 'GET_HOURLY_FORECAST_ERROR': {
       return Object.assign({}, state, {
         message: action.message,
-        hourlyLoading: false
+        loading: {
+          ...state.loading,
+          hourlyLoading: false
+        }
       });
     }
-    case "GET_EXTENDED_FORECAST_REQUEST": {
+    case 'GET_EXTENDED_FORECAST_REQUEST': {
       return Object.assign({}, state, {
-        extendedLoading: true
+        loading: {
+          ...state.loading,
+          extendedForecast: true
+        }
       });
     }
-    case "GET_EXTENDED_FORECAST_SUCCESS": {
+    case 'GET_EXTENDED_FORECAST_SUCCESS': {
       return Object.assign({}, state, {
         extendedForecastData: action.data,
-        extendedLoading: false
+        loading: {
+          ...state.loading,
+          extendedForecast: false
+        }
       });
     }
-    case "GET_EXTENDED_FORECAST_ERROR": {
+    case 'GET_EXTENDED_FORECAST_ERROR': {
       return Object.assign({}, state, {
         message: action.message,
-        extendedLoading: false
+        loading: {
+          ...state.loading,
+          extendedForecast: false
+        }
       });
     }
-    case "GET_ALERT_REQUEST": {
+    case 'GET_ALERT_REQUEST': {
       return Object.assign({}, state, {
-        alertLoading: true
+        loading: {
+          ...state.loading,
+          alert: true
+        }
       });
     }
-    case "GET_ALERT_SUCCESS": {
+    case 'GET_ALERT_SUCCESS': {
       return Object.assign({}, state, {
-        alertLoading: false,
-        alert: action.data
+        alert: action.data,
+        loading: {
+          ...state.loading,
+          alert: false
+        }
       });
     }
-    case "GET_ALERT_ERROR": {
+    case 'GET_ALERT_ERROR': {
       return Object.assign({}, state, {
-        alertLoading: false,
+        loading: {
+          ...state.loading,
+          alert: false
+        },
         message: action.message
       });
     }
-    case "CLEAR_VALIDATE_LOCATION_ERROR": {
+    case 'CLEAR_VALIDATE_LOCATION_ERROR': {
       return Object.assign({}, state, {
         locationError: null
       });
     }
-    case "VALIDATE_LOCATION_REQUEST": {
+    case 'VALIDATE_LOCATION_REQUEST': {
       return Object.assign({}, state, {
         loading: true
       });
     }
-    case "VALIDATE_LOCATION_SUCCESS": {
+    case 'VALIDATE_LOCATION_SUCCESS': {
       return Object.assign({}, state, {
         loading: false
       });
     }
-    case "VALIDATE_LOCATION_ERROR": {
+    case 'VALIDATE_LOCATION_ERROR': {
       return Object.assign({}, state, {
         locationError: action.err,
         loading: false
       });
     }
-    case "FETCH_LOCATIONS_REQUEST": {
+    case 'FETCH_LOCATIONS_REQUEST': {
       return Object.assign({}, state, {
-        fetchLocationLoading: true
+        loading: {
+          ...state.loading,
+          fetchLocations: true
+        }
       });
     }
 
-    case "FETCH_LOCATIONS_SUCCESS": {
+    case 'FETCH_LOCATIONS_SUCCESS': {
       return Object.assign({}, state, {
-        locations: action.locations,
-        fetchLocationLoading: false
+        loading: {
+          ...state.loading,
+          fetchLocations: false
+        },
+        locations: action.locations
       });
     }
-    case "FETCH_LOCATIONS_ERROR": {
+    case 'FETCH_LOCATIONS_ERROR': {
       return Object.assign({}, state, {
         error: action.message,
-        fetchLocationLoading: false
+        loading: {
+          ...state.loading,
+          fetchLocations: false
+        }
       });
     }
-    case "DELETE_LOCATION_REQUEST": {
+    case 'DELETE_LOCATION_REQUEST': {
       return Object.assign({}, state, {
         loading: true
       });
     }
-    case "DELETE_LOCATION_SUCCESS": {
+    case 'DELETE_LOCATION_SUCCESS': {
       return Object.assign({}, state, {
         locations: action.locations.locations,
         loading: false
       });
     }
-    case "DELETE_LOCATION_ERROR": {
+    case 'DELETE_LOCATION_ERROR': {
       return Object.assign({}, state, {
         loading: false,
         message: action.message
       });
     }
-    case "GET_METRIC_REQUEST": {
+    case 'GET_METRIC_REQUEST': {
       return Object.assign({}, state, {
         loading: true
       });
     }
-    case "GET_METRIC_SUCCESS": {
+    case 'GET_METRIC_SUCCESS': {
       return Object.assign({}, state, {
         metric: action.data,
         loading: false
       });
     }
-    case "GET_METRIC_ERROR": {
+    case 'GET_METRIC_ERROR': {
       return Object.assign({}, state, {
         loading: false,
         message: action.message
       });
     }
-    case "EDIT_METRIC_REQUEST": {
+    case 'EDIT_METRIC_REQUEST': {
       return Object.assign({}, state, {
         loading: true
       });
     }
-    case "EDIT_METRIC_SUCCESS": {
+    case 'EDIT_METRIC_SUCCESS': {
       return Object.assign({}, state, {
         metric: action.data.metric,
         loading: false
       });
     }
-    case "EDIT_METRIC_ERROR": {
+    case 'EDIT_METRIC_ERROR': {
       return Object.assign({}, state, {
         loading: false,
         message: action.message
       });
     }
-    default: return state;
+    default:
+      return state;
   }
 }

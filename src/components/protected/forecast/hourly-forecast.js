@@ -1,13 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import requiresLogin from "../../requires-login";
-import ApiAttribution from "../../unprotected/api-attribution";
+import requiresLogin from '../../requires-login';
+import ApiAttribution from '../../unprotected/api-attribution';
 
-import { getHourlyForecast } from "../../../actions/forecast";
-import Spinner from "../../unprotected/spinner";
+import { getHourlyForecast } from '../../../actions/forecast';
+import Spinner from '../../unprotected/spinner';
 
-import "./styles/hourly-forecast.css";
+import './styles/hourly-forecast.css';
 
 export class HourlyForecast extends React.Component {
   componentDidMount() {
@@ -15,43 +15,30 @@ export class HourlyForecast extends React.Component {
     this.props.dispatch(getHourlyForecast(location));
   }
   renderHours() {
-    if (this.props.hourlyLoading === false) {
+    if (!this.props.loading) {
       const hourlyData = this.props.hourlyForecastData.map((item, index) => (
         <li className="hourly gradient row" key={index}>
           <div className="col-xs-12 col-sm-2">
-            {item.FCTTIME.civil === "12:00 AM" ? (
-              <span className="hourly-time-midnight">
-                {item.FCTTIME.weekday_name},
-              </span>
-            ) : (
-              ""
-            )}
+            {item.FCTTIME.civil === '12:00 AM' ? <span className="hourly-time-midnight">{item.FCTTIME.weekday_name},</span> : ''}
             <span className="hourly-time">{item.FCTTIME.civil}</span>
             <div className="hourly-temp">
               <span>
                 {this.props.metric ? item.temp.metric : item.temp.english}
-                <span className="hourly-temp-degrees">
-                  {this.props.metric ? "°C" : "°F"}
-                </span>
+                <span className="hourly-temp-degrees">{this.props.metric ? '°C' : '°F'}</span>
               </span>
             </div>
           </div>
           <div className="col-xs-12 col-sm-3">
-            <span className="hourly-heading hourly-condition">
-              {item.condition}
-            </span>
-            <img src={item.icon_url} alt="weather icon representing forecast" className="hourly-img"/>
+            <span className="hourly-heading hourly-condition">{item.condition}</span>
+            <img src={item.icon_url} alt="weather icon representing forecast" className="hourly-img" />
           </div>
           <div className="col-xs-12 col-sm-3">
             <span className="hourly-inner">
-              <span className="hourly-heading">chance of precip: </span>{" "}
-              {item.pop}%
+              <span className="hourly-heading">chance of precip: </span> {item.pop}%
             </span>
             <span className="hourly-inner">
               <span className="hourly-heading">wind: </span>
-              {item.wdir.dir}{" "}
-              {this.props.metric ? item.wspd.metric : item.wspd.english}{" "}
-              {this.props.metric ? "kph" : "mph"}
+              {item.wdir.dir} {this.props.metric ? item.wspd.metric : item.wspd.english} {this.props.metric ? 'kph' : 'mph'}
             </span>
 
             <span className="hourly-inner">
@@ -67,8 +54,7 @@ export class HourlyForecast extends React.Component {
 
             <span className="hourly-inner">
               <span className="hourly-heading">air pressure: </span>
-              {this.props.metric ? item.mslp.metric : item.mslp.english}{" "}
-              {this.props.metric ? "mb" : "in"}
+              {this.props.metric ? item.mslp.metric : item.mslp.english} {this.props.metric ? 'mb' : 'in'}
             </span>
 
             <span className="hourly-inner">
@@ -77,10 +63,7 @@ export class HourlyForecast extends React.Component {
             </span>
             <span className="hourly-inner">
               <span className="hourly-heading">dewpoint: </span>
-              {this.props.metric
-                ? item.dewpoint.metric
-                : item.dewpoint.english}{" "}
-              {this.props.metric ? "°C" : "°F"}
+              {this.props.metric ? item.dewpoint.metric : item.dewpoint.english} {this.props.metric ? '°C' : '°F'}
             </span>
           </div>
         </li>
@@ -88,13 +71,13 @@ export class HourlyForecast extends React.Component {
       return (
         <div>
           <ul>{hourlyData}</ul>
-          <ApiAttribution/>
+          <ApiAttribution />
         </div>
       );
-    } else if (this.props.hourlyLoading) {
+    } else {
       return (
         <div className="loader">
-          <Spinner/>
+          <Spinner />
         </div>
       );
     }
@@ -109,7 +92,7 @@ const mapStateToProps = state => {
   return {
     id: state.auth.currentUser.id,
     hourlyForecastData: state.forecast.hourlyForecastData,
-    hourlyLoading: state.forecast.hourlyLoading,
+    loading: state.forecast.loading.hourlyForecast,
     metric: state.forecast.metric
   };
 };

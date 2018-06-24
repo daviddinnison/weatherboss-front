@@ -17,7 +17,7 @@ export class ExtendedForecast extends React.Component {
   }
 
   renderDays() {
-    if (this.props.extendedLoading === false) {
+    if (!this.props.loading) {
       const tenDayData = this.props.extendedForecastData.forecastday.map(
         (item, index) => (
           <li className="individual-day gradient row" key={index}>
@@ -69,7 +69,7 @@ export class ExtendedForecast extends React.Component {
           <ApiAttribution/>
         </div>
       );
-    } else if (this.props.extendedLoading) {
+    } else {
       return (
         <div className="loader">
         <Spinner/>
@@ -88,7 +88,7 @@ const mapStateToProps = state => {
     id: state.auth.currentUser.id,
     locations: state.protectedData.locations,
     extendedForecastData: state.forecast.extendedForecastData,
-    extendedLoading: state.forecast.extendedLoading,
+    loading: state.forecast.loading.extendedForecast,
     metric: state.forecast.metric
   };
 };

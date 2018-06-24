@@ -17,7 +17,7 @@ export class Locations extends React.Component {
   }
 
   renderLocations() {
-    if (this.props.fetchLocationLoading) {
+    if (this.props.loading) {
       return (
         <div className="location-loader">
           <Spinner />
@@ -49,7 +49,7 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     id: state.auth.currentUser.id,
     locations: state.forecast.locations,
-    fetchLocationLoading: state.forecast.fetchLocationLoading
+    loading: state.forecast.loading.fetchLocations
   };
 };
 

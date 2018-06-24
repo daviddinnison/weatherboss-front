@@ -15,7 +15,7 @@ export class ForecastAlert extends React.Component {
   }
 
   renderAlert() {
-    if (this.props.alertLoading) {
+    if (this.props.loading) {
       return (
         <div className="loader">
           <Spinner/>
@@ -47,7 +47,7 @@ const mapStateToProps = state => {
     id: state.auth.currentUser.id,
     locations: state.protectedData.locations,
     alert: state.forecast.alert,
-    alertLoading: state.forecast.alertLoading
+    loading: state.forecast.alert.loading
   };
 };
 
